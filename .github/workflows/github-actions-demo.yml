@@ -56,7 +56,14 @@ jobs:
       name: Production
       url: https://writeabout.net
     if: github.event.inputs.environment == 'Production'
+    env:
+      SECRET: ${{ secrets.MY_SECRET }}
+      VAR: ${{ vars.MY_VAR }}
     steps:
+      - run: |   
+          echo "Secret: $SECRET"
+          echo "VAR: $VAR"
+          sleep 10
       - run: |
           echo "🚀 Step 1..."
           sleep 10
